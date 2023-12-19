@@ -9,9 +9,9 @@ from nguylinc_python_utils.sqlalchemy import BaseExtended
 class Project(Base, BaseExtended):
     __tablename__ = "projects"
     id = Column(String(36), primary_key=True, index=True, default=uuid.uuid4)
+    name = Column(String(100), index=True, unique=True)
     created_at: ColumnElement = Column(DateTime(), index=True)
     updated_at: ColumnElement = Column(DateTime(), index=True)
-    name = Column(String(100), index=True, unique=True)
     editable_fields = ["name"]
 
     def get_pdf_location(self):
